@@ -47,6 +47,13 @@ $ curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-docto
 $ . /usr/local/Cellar/rbenv/1.1.2/bin/rbenv init
 {% endhighlight %}
 
+`注意：在执行 rbenv init 前，需要在 ~/.bash_profile 文件中添加以下内容`
+
+{% highlight shell %}
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+{% endhighlight %}
+
 rbenv 成功安装和配置后，重启终端，这时我们可以安装相应版本的 Ruby 了。
 
 {% highlight shell %}
