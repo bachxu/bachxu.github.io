@@ -28,7 +28,7 @@ rbenv 可以帮助我们管理多个版本的 Ruby，这对我们要在不同的
 $ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 {% endhighlight %}
 
-安装 Homebrew 的时候需要一个稳定的网络，安装成功后，通过 Homebrew 来安装 rbenv。
+安装 Homebrew 的时候需要一个稳定的网络，安装成功后，通过 Homebrew 来安装 rbenv。如果在安装 Homebrew 的时候发现网络环境不是特别理想，可以尝试连接手机热点，亲测使用手机热点有效(移动 4G)，速度一下达到了兆。
 
 {% highlight shell %}
 # Install rbenv and ruby-build
