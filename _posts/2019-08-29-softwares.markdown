@@ -37,6 +37,7 @@ categories: iTools
 - [Jenkins](https://jenkins.io): 持续集成工具
 - [Charles](https://www.charlesproxy.com/): 网络封包分析软件
 - [npm](https://www.npmjs.com/): JavaScript 包管理器
+- [Paw](https://paw.cloud/): API 工具
 
 密码管理
 
