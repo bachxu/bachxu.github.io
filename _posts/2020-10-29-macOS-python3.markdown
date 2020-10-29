@@ -18,24 +18,24 @@ categories: iTechnology
 
 为了不影响系统的目录结构，达到隔离第三方库，习惯在项目中构建虚拟的 python 环境，这样每个项目使用的依赖库只会存在当前的虚拟环境中，互不影响。
 
-1 使用 python3 中的 pip3 安装最新版本的 virtualenv，pip3 指令在 `/Library/Frameworks/Python.framework/Versions/3.9/bin` 目录下，但是可以直接使用。
+1、使用 python3 中的 pip3 安装最新版本的 virtualenv，pip3 指令在 `/Library/Frameworks/Python.framework/Versions/3.9/bin` 目录下，但是可以直接使用。
 
 ``` shell
 $ pip3 install virtualenv
 ```
 
-2 成功安装 virtualenv 后，在 `/Library/Frameworks/Python.framework/Versions/3.9/bin` 目录下多了 `virtualenv` 指令文件，通过该指令在相应的项目目录下创建 python3 虚拟环境。
+2、成功安装 virtualenv 后，在 `/Library/Frameworks/Python.framework/Versions/3.9/bin` 目录下多了 `virtualenv` 指令文件，通过该指令在相应的项目目录下创建 python3 虚拟环境。
 
 ``` shell
 $ /Library/Frameworks/Python.framework/Versions/3.9/bin/virtualenv -p python3 py3env
 ```
 
-3 成功搭建虚拟环境后，即可激活。
+3、成功搭建虚拟环境后，即可激活。
 
 ``` shell
 $ source ./py3env/bin/activate
 ```
 
-4 激活后，通过 python 指令即可查看当前虚拟环境的 python 版本号，所有安装的依赖库也都会安装在该虚拟环境下。
+4、激活后，通过 python 指令即可查看当前虚拟环境的 python 版本号，所有安装的依赖库也都会安装在该虚拟环境下。
 
 Follow your heart.
