@@ -38,6 +38,7 @@ categories: iTools
 - [Charles](https://www.charlesproxy.com/): 网络封包分析软件
 - [npm](https://www.npmjs.com/): JavaScript 包管理器
 - [Paw](https://paw.cloud/): API 工具
+- [Termius](https://www.termius.com/): SSH 客户端
 
 密码管理
 
