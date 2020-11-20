@@ -102,6 +102,12 @@ clang: error: linker command failed with exit code 1 (use -v to see invocation)
 
 另外有需要对生成的静态库大小进行控制，可以考虑在创建静态库工程的【Generate Debug Symbols】的值设置为 NO，这样可以除去当前工程的符号。
 
+#### 如何查看当前 Framework 支持的框架
+
+``` shell
+$ lipo -info xxxx.framwork/xxxx
+```
+
 Follow your heart.
 
 ### 参考资料
