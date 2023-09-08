@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Charles 是一款集 HTTP proxy&#x2F;HTTP monitor&#x2F;Reverse Proxy 于一体，使调试能够快速、可靠和先进，节省时间的工具。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="人生苦短, 需要 Charles">
+<meta property="og:url" content="http://example.com/2022/06/21/2022-06-21-charles/index.html">
+<meta property="og:site_name" content="Alone">
+<meta property="og:description" content="Charles 是一款集 HTTP proxy&#x2F;HTTP monitor&#x2F;Reverse Proxy 于一体，使调试能够快速、可靠和先进，节省时间的工具。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://bachxu.github.io/images/20220621/01.png">
+<meta property="og:image" content="https://bachxu.github.io/images/20220621/02.png">
+<meta property="og:image" content="https://bachxu.github.io/images/20220621/03.png">
+<meta property="og:image" content="https://bachxu.github.io/images/20220621/04.png">
+<meta property="og:image" content="https://bachxu.github.io/images/20220621/05.png">
+<meta property="og:image" content="https://bachxu.github.io/images/20220621/06.png">
+<meta property="og:image" content="https://bachxu.github.io/images/20220621/07.png">
+<meta property="og:image" content="https://bachxu.github.io/images/20220621/08.png">
+<meta property="article:published_time" content="2022-06-21T15:19:00.000Z">
+<meta property="article:modified_time" content="2023-06-29T06:23:49.771Z">
+<meta property="article:author" content="Bach Xu">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://bachxu.github.io/images/20220621/01.png">
+
+<link rel="canonical" href="http://example.com/2022/06/21/2022-06-21-charles/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>人生苦短, 需要 Charles | Alone</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Alone</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">Follow your heart</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/06/21/2022-06-21-charles/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bach Xu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Alone">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          人生苦短, 需要 Charles
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-06-21 23:19:00" itemprop="dateCreated datePublished" datetime="2022-06-21T23:19:00+08:00">2022-06-21</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2023-06-29 14:23:49" itemprop="dateModified" datetime="2023-06-29T14:23:49+08:00">2023-06-29</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iTools/" itemprop="url" rel="index"><span itemprop="name">iTools</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p><a target="_blank" rel="noopener" href="https://www.charlesproxy.com/">Charles</a> 是一款集 HTTP proxy&#x2F;HTTP monitor&#x2F;Reverse Proxy 于一体，使调试能够快速、可靠和先进，节省时间的工具。</p>
+<span id="more"></span>
+
+<h2 id="关键特点"><a href="#关键特点" class="headerlink" title="关键特点"></a>关键特点</h2><ul>
+<li>SSL 代理 – 查看纯文本的SSL请求和响应</li>
+<li>带宽节流，模拟较慢的互联网连接，包括延时场景</li>
+<li>AJAX 调试 – 以树状或文本形式查看 XML 和 JSON 请求和响应</li>
+<li>AMF – 以树状形式查看 Flash Remoting&#x2F;Flex Remoting 消息的内容</li>
+<li>重复请求以测试后端变化</li>
+<li>编辑请求以测试不同的输入</li>
+<li>断点 - 拦截和编辑请求或响应</li>
+<li>使用 W3C 验证器验证记录的 HTML、CSS 和 RSS&#x2F;atom 响应</li>
+</ul>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><ul>
+<li>macOS 12.4</li>
+</ul>
+<p>从官网下载安装包并安装。</p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="SSL-代理"><a href="#SSL-代理" class="headerlink" title="SSL 代理"></a>SSL 代理</h3><p>如果你只捕获 HTTP 请求，只需要打开默认配置的 Charles。如果你捕获 HTTPS 请求，可以参考以下步骤。</p>
+<h4 id="安装-Charles-根证书"><a href="#安装-Charles-根证书" class="headerlink" title="安装 Charles 根证书"></a>安装 Charles 根证书</h4><ol>
+<li>选择 Charles 菜单栏路径 Help -&gt; SSL Proxying -&gt; Install Charles Root Certificate</li>
+<li>点击以上菜单后，会自动打开 <strong>Keychain Access</strong> 应用<br> <img src="https://bachxu.github.io/images/20220621/01.png" alt="Keychain Access"></li>
+<li>如果该证书不被信任，那么名称旁边的图标是红色的。双击 Charles 的密钥串，在使用证书时选择 <strong>Always Trust</strong><br> <img src="https://bachxu.github.io/images/20220621/02.png" alt="Always Trust"></li>
+</ol>
+<h4 id="SSL-代理设置"><a href="#SSL-代理设置" class="headerlink" title="SSL 代理设置"></a>SSL 代理设置</h4><ol>
+<li>选择 Charles 菜单栏路径 Proxy -&gt; SSL Proxying Settings</li>
+<li>打开 <strong>Enable SSL Proxying</strong> 开关，添加 <code>*:443</code> 到 <strong>Include</strong> 栏<br> <img src="https://bachxu.github.io/images/20220621/03.png" alt="SSL Proxying Settings"></li>
+<li>从 Charles 菜单路路径 Proxy -&gt; Proxy Settings，打开 <strong>Enable transparent HTTP proxying</strong> 开关<br> <img src="https://bachxu.github.io/images/20220621/04.png" alt="Proxy Settings"></li>
+</ol>
+<h3 id="PC-x2F-Web-浏览器"><a href="#PC-x2F-Web-浏览器" class="headerlink" title="PC&#x2F;Web 浏览器"></a>PC&#x2F;Web 浏览器</h3><p>选择 Charles 菜单栏路径 Proxy -&gt; macOS Proxy, 然后就可以捕获从 PC&#x2F;Web 浏览器的请求。</p>
+<h3 id="Mobile-设备"><a href="#Mobile-设备" class="headerlink" title="Mobile 设备"></a>Mobile 设备</h3><p>只要打开 <strong>External Proxy Servers</strong> 就可以捕获从 Mobile 设备的请求。</p>
+<ol>
+<li>取消选择 Charles 菜单栏路径 Proxy -&gt; macOS Proxy</li>
+<li>在状态栏点击 Charles 应用图标, 选择 <strong>External Proxy Servers</strong></li>
+</ol>
+<p>要设置 Mobile 设备代理，需要注意设备和电脑所连接的是同一个 Wi-Fi。</p>
+<ol>
+<li>在 iPhone 端打开 <strong>Settings</strong> 应用</li>
+<li>在 <strong>WLAN</strong> 选择连接的网络</li>
+<li>配置代理</li>
+</ol>
+<p><img src="https://bachxu.github.io/images/20220621/05.png" alt="Mobile device"></p>
+<h4 id="捕获-HTTPS-请求"><a href="#捕获-HTTPS-请求" class="headerlink" title="捕获 HTTPS 请求"></a>捕获 HTTPS 请求</h4><p>如果你想捕获手机上的 HTTPS 请求，需要选择 Charles 菜单栏路径 Help -&gt; SSL Proxying -&gt; Install Charles Root Certificate on a Mobile Device or Remote Browser，然后会弹出一个对话框，上面会描述移动设备上的具体配置步骤。</p>
+<p><img src="https://bachxu.github.io/images/20220621/06.png" alt="SSL Proxying"></p>
+<h2 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h2><h3 id="当有-VPN-直连时，Charles-不能捕获请求"><a href="#当有-VPN-直连时，Charles-不能捕获请求" class="headerlink" title="当有 VPN 直连时，Charles 不能捕获请求"></a>当有 VPN 直连时，Charles 不能捕获请求</h3><ol>
+<li>下载并安装 Chrome 的扩展应用 <a target="_blank" rel="noopener" href="https://chrome.google.com/webstore/detail/proxy-switchyomega/padekgcemlokbadohgkifijomclgjgif?utm_source=chrome-ntp-icon">Proxy SwitchyOmega</a></li>
+<li>打开 SwitchyOmega 扩展并且新建一个配置<br> <img src="https://bachxu.github.io/images/20220621/07.png" alt="Create a new profile"></li>
+<li>配置协议，服务和端口，并且应用配置<br> <img src="https://bachxu.github.io/images/20220621/08.png" alt="Configure profile"></li>
+<li>打开 Charles, 只选择 <strong>External Proxy Servers</strong>，不要选择 macOS Proxy</li>
+<li>当你要捕获请求时，在 SwitchyOmega 切换到 <strong>charles</strong></li>
+</ol>
+<p>如果你不捕获请求了，不要忘记把 SwitchyOmega 切换回 <strong>System Proxy</strong></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/05/28/2022-05-28-git-tools-submodules/" rel="prev" title="Git 工具 - 子模块">
+      <i class="fa fa-chevron-left"></i> Git 工具 - 子模块
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/11/04/2022-11-04-yapi-development-guidelines/" rel="next" title="YAPI 开发指南">
+      YAPI 开发指南 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E7%89%B9%E7%82%B9"><span class="nav-number">1.</span> <span class="nav-text">关键特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">2.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%83%8C%E6%99%AF"><span class="nav-number">2.1.</span> <span class="nav-text">背景</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SSL-%E4%BB%A3%E7%90%86"><span class="nav-number">3.1.</span> <span class="nav-text">SSL 代理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-Charles-%E6%A0%B9%E8%AF%81%E4%B9%A6"><span class="nav-number">3.1.1.</span> <span class="nav-text">安装 Charles 根证书</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SSL-%E4%BB%A3%E7%90%86%E8%AE%BE%E7%BD%AE"><span class="nav-number">3.1.2.</span> <span class="nav-text">SSL 代理设置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PC-x2F-Web-%E6%B5%8F%E8%A7%88%E5%99%A8"><span class="nav-number">3.2.</span> <span class="nav-text">PC&#x2F;Web 浏览器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Mobile-%E8%AE%BE%E5%A4%87"><span class="nav-number">3.3.</span> <span class="nav-text">Mobile 设备</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8D%95%E8%8E%B7-HTTPS-%E8%AF%B7%E6%B1%82"><span class="nav-number">3.3.1.</span> <span class="nav-text">捕获 HTTPS 请求</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FAQ"><span class="nav-number">4.</span> <span class="nav-text">FAQ</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BD%93%E6%9C%89-VPN-%E7%9B%B4%E8%BF%9E%E6%97%B6%EF%BC%8CCharles-%E4%B8%8D%E8%83%BD%E6%8D%95%E8%8E%B7%E8%AF%B7%E6%B1%82"><span class="nav-number">4.1.</span> <span class="nav-text">当有 VPN 直连时，Charles 不能捕获请求</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Bach Xu"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Bach Xu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bach Xu</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
