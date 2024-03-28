@@ -20,15 +20,19 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Alone">
-<meta property="og:url" content="http://example.com/archives/2022/05/index.html">
+  <meta name="description" content="本文主要介绍 Linux 系统下常用的命令操作。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux 常用命令">
+<meta property="og:url" content="http://example.com/2024/02/02/2024-02-02-linux-common-commands/index.html">
 <meta property="og:site_name" content="Alone">
+<meta property="og:description" content="本文主要介绍 Linux 系统下常用的命令操作。">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-02-02T02:47:11.000Z">
+<meta property="article:modified_time" content="2024-02-02T03:02:13.541Z">
 <meta property="article:author" content="Bach Xu">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/archives/2022/05/">
+<link rel="canonical" href="http://example.com/2024/02/02/2024-02-02-linux-common-commands/">
 
 
 <script id="page-configurations">
@@ -36,12 +40,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'en'
   };
 </script>
 
-  <title>Archive | Alone</title>
+  <title>Linux 常用命令 | Alone</title>
   
 
 
@@ -140,50 +144,113 @@
         <div class="content-wrap">
           
 
-          <div class="content archive">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <span class="collection-header">Um..! 17 posts in total. Keep on posting.</span>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2024/02/02/2024-02-02-linux-common-commands/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Bach Xu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Alone">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Linux 常用命令
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2024-02-02 10:47:11 / Modified: 11:02:13" itemprop="dateCreated datePublished" datetime="2024-02-02T10:47:11+08:00">2024-02-02</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iTools/" itemprop="url" rel="index"><span itemprop="name">iTools</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2022</span>
+        <p>本文主要介绍 Linux 系统下常用的命令操作。</p>
+<span id="more"></span>
+
+<h2 id="日志查看相关命令"><a href="#日志查看相关命令" class="headerlink" title="日志查看相关命令"></a>日志查看相关命令</h2><p>查看 test.log 中包含 test 字符的日志</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep <span class="string">&quot;test&quot;</span> test.log</span><br></pre></td></tr></table></figure>
+
+<p>如果想查看指定内容的上下几行，可以参考下面的用法：</p>
+<ul>
+<li><p>打印匹配行的前后 10 行</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方法一</span></span><br><span class="line">grep -10 <span class="string">&quot;test&quot;</span> test.log</span><br><span class="line"><span class="comment"># 方法二</span></span><br><span class="line">grep -C 10 <span class="string">&quot;test&quot;</span> test.log</span><br><span class="line"><span class="comment"># 方法三</span></span><br><span class="line">grep -A 10 -B 10 <span class="string">&quot;test&quot;</span> test.log</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>打印匹配行的后 10 行</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -A 10 <span class="string">&quot;test&quot;</span> test.log</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>打印匹配行的前 10 行</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -B 10 <span class="string">&quot;test&quot;</span> test.log</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>其他用法</p>
+<ul>
+<li><p>显示满足内容的行号</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -n <span class="string">&quot;test&quot;</span> test.log</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看 test.log 指定行号后的内容，比如 50 行</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">tail</span> -n +50 test.log</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看 test.log 的第 50 行到 100 行</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed -n <span class="string">&#x27;50, 100p&#x27;</span> test.log</span><br></pre></td></tr></table></figure></li>
+</ul>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-05-28T15:55:55+08:00"
-              content="2022-05-28">
-          05-28
-        </time>
-      </div>
+      <footer class="post-footer">
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/05/28/2022-05-28-git-tools-submodules/" itemprop="url">
-            <span itemprop="name">Git 工具 - 子模块</span>
-          </a>
-      </div>
+        
 
-    </header>
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/09/07/2023-09-07-plantuml/" rel="prev" title="代码绘图工具 PlantUML">
+      <i class="fa fa-chevron-left"></i> 代码绘图工具 PlantUML
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
   </article>
-
-
-    </div>
-  </div>
   
   
-  
-
   
 
 
@@ -236,6 +303,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A5%E5%BF%97%E6%9F%A5%E7%9C%8B%E7%9B%B8%E5%85%B3%E5%91%BD%E4%BB%A4"><span class="nav-number">1.</span> <span class="nav-text">日志查看相关命令</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
